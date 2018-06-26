@@ -1,0 +1,94 @@
+Ivy Default Cache set to: /home/ubuntu/.ivy2/cache
+The jars for the packages stored in: /home/ubuntu/.ivy2/jars
+:: loading settings :: url = jar:file:/usr/local/spark/jars/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+org.apache.spark#spark-streaming-kafka-0-8_2.11 added as a dependency
+anguenot#pyspark-cassandra added as a dependency
+:: resolving dependencies :: org.apache.spark#spark-submit-parent;1.0
+	confs: [default]
+	found org.apache.spark#spark-streaming-kafka-0-8_2.11;2.2.0 in central
+	found org.apache.kafka#kafka_2.11;0.8.2.1 in central
+	found org.scala-lang.modules#scala-xml_2.11;1.0.2 in central
+	found com.yammer.metrics#metrics-core;2.2.0 in spark-list
+	found org.slf4j#slf4j-api;1.7.16 in central
+	found org.scala-lang.modules#scala-parser-combinators_2.11;1.0.2 in central
+	found com.101tec#zkclient;0.3 in central
+	found log4j#log4j;1.2.17 in central
+	found org.apache.kafka#kafka-clients;0.8.2.1 in central
+	found net.jpountz.lz4#lz4;1.3.0 in spark-list
+	found org.xerial.snappy#snappy-java;1.1.2.6 in spark-list
+	found org.apache.spark#spark-tags_2.11;2.2.0 in central
+	found org.spark-project.spark#unused;1.0.0 in central
+	found anguenot#pyspark-cassandra;0.9.0 in spark-packages
+	found com.datastax.spark#spark-cassandra-connector_2.11;2.3.0 in central
+	found com.twitter#jsr166e;1.1.0 in central
+	found commons-beanutils#commons-beanutils;1.9.3 in central
+	found commons-collections#commons-collections;3.2.2 in central
+	found joda-time#joda-time;2.3 in central
+	found org.joda#joda-convert;1.2 in central
+	found io.netty#netty-all;4.0.33.Final in central
+	found org.scala-lang#scala-reflect;2.11.8 in spark-list
+	[2.11.8] org.scala-lang#scala-reflect;2.11.8
+	found net.razorvine#pyrolite;4.10 in central
+	found net.razorvine#serpent;1.12 in central
+:: resolution report :: resolve 5628ms :: artifacts dl 36ms
+	:: modules in use:
+	anguenot#pyspark-cassandra;0.9.0 from spark-packages in [default]
+	com.101tec#zkclient;0.3 from central in [default]
+	com.datastax.spark#spark-cassandra-connector_2.11;2.3.0 from central in [default]
+	com.twitter#jsr166e;1.1.0 from central in [default]
+	com.yammer.metrics#metrics-core;2.2.0 from spark-list in [default]
+	commons-beanutils#commons-beanutils;1.9.3 from central in [default]
+	commons-collections#commons-collections;3.2.2 from central in [default]
+	io.netty#netty-all;4.0.33.Final from central in [default]
+	joda-time#joda-time;2.3 from central in [default]
+	log4j#log4j;1.2.17 from central in [default]
+	net.jpountz.lz4#lz4;1.3.0 from spark-list in [default]
+	net.razorvine#pyrolite;4.10 from central in [default]
+	net.razorvine#serpent;1.12 from central in [default]
+	org.apache.kafka#kafka-clients;0.8.2.1 from central in [default]
+	org.apache.kafka#kafka_2.11;0.8.2.1 from central in [default]
+	org.apache.spark#spark-streaming-kafka-0-8_2.11;2.2.0 from central in [default]
+	org.apache.spark#spark-tags_2.11;2.2.0 from central in [default]
+	org.joda#joda-convert;1.2 from central in [default]
+	org.scala-lang#scala-reflect;2.11.8 from spark-list in [default]
+	org.scala-lang.modules#scala-parser-combinators_2.11;1.0.2 from central in [default]
+	org.scala-lang.modules#scala-xml_2.11;1.0.2 from central in [default]
+	org.slf4j#slf4j-api;1.7.16 from central in [default]
+	org.spark-project.spark#unused;1.0.0 from central in [default]
+	org.xerial.snappy#snappy-java;1.1.2.6 from spark-list in [default]
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   24  |   7   |   7   |   0   ||   24  |   0   |
+	---------------------------------------------------------------------
+
+:: problems summary ::
+:::: ERRORS
+	unknown resolver null
+
+	unknown resolver null
+
+	unknown resolver null
+
+	unknown resolver null
+
+	unknown resolver null
+
+	unknown resolver null
+
+
+:: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+:: retrieving :: org.apache.spark#spark-submit-parent
+	confs: [default]
+	0 artifacts copied, 24 already retrieved (0kB/33ms)
+18/06/19 16:02:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+hdfs://ec2-18-205-221-147.compute-1.amazonaws.com:9000/home/ubuntu/spark-checkpoint
+['ec2-18-205-221-147.compute-1.amazonaws.com:2181']['2_channel']
+<pyspark.streaming.dstream.DStream object at 0x7ff033daac10>
+Traceback (most recent call last):
+  File "/home/ubuntu/twitchatter/src/spark/streaming_only.py", line 139, in <module>
+    main()
+  File "/home/ubuntu/twitchatter/src/spark/streaming_only.py", line 73, in main
+    total_msg_counts(storeToRedis2)
+TypeError: 'DStream' object is not callable

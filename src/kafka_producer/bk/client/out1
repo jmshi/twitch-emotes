@@ -1,0 +1,7 @@
+44322889
+dallas
+dallas
+Traceback (most recent call last):
+  File "show_channel.py", line 13, in <module>
+    print(stream['channel'])
+TypeError: list indices must be integers, not str
