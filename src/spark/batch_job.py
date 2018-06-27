@@ -12,18 +12,6 @@ import config
 import time
 import datetime
 
-#def track_trends(rdditer):
-#        redis_session = redis.Redis(host=config.redis_address, port=config.redis_port, db=config.dbcount)
-#        with redis_session.pipeline() as pipe:
-#             for data in rdditer:
-#                 pipe.zincrby("trends", str(data[2]), 1)
-#                 pipe.execute()
-
-def storeToRedis(rdd):
-        r = redis.Redis(host=config.redis_address, port=config.redis_port, db=config.redis_dbcount)
-        for data in rdd.collect():
-            r.set(data[0],data[1])
-
 def updateTotalCount(currentState,countState):
     if countState is None:
         countState = 0

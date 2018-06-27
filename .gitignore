@@ -9,9 +9,13 @@ data/emotes_set/*
 metastore_db/
 others/
 others/*
-
+src/spark/spark-warehouse/
+src/spark/bk/
+src/kafka-producer/bk/
+src/redis/
 build
 dist
+others/
 python_twitch_stream.egg-info
 
 

@@ -8,8 +8,6 @@ from kafka import KafkaProducer
 import sys
 import threading, time
 from twitch import TwitchClient
-#from client.twitch import *
-#from client.twitch.api import *
 
 def get_active_channel(limit=2):
     bots = TwitchClient(client_id=config.channel_client_id)
@@ -17,9 +15,7 @@ def get_active_channel(limit=2):
     #
     channel_list = [item[u'channel'][u'display_name'].encode('ascii','ignore').lower() for item in stream]
     print("connecting to channels:{}".format(channel_list[0:2]))
-    #return ['louismccabe64','dakotaz']
     return channel_list[0:limit]
-    #return ['ninja','dreamhackcs']
 
 
 
@@ -49,7 +45,6 @@ class Producer(threading.Thread):
             for chatstream in chatstream_list:
                 received = chatstream.twitch_receive_messages()
                 if received:
-                    #print("producer: {}".format(received[0]))
                     self.producer.send(config.topic, json.dumps(received[0]).encode('utf-8'))
         self.producer.close()
 

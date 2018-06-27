@@ -10,15 +10,12 @@ import threading, time
 from twitch import TwitchClient
 import multiprocessing as mp
 
-#from client.twitch import *
-#from client.twitch.api import *
 
 def get_active_channel(offset=0,limit=100):
     bots = TwitchClient(client_id=config.channel_client_id)
     stream  = bots.streams.get_live_streams(offset=offset,limit=limit)
     
     channel_list = [item[u'channel'][u'name'].encode('ascii','ignore').lower() for item in stream]
-    #print("connecting to channels:{}".format(channel_list[0:2]))
     return channel_list
 
 
@@ -62,16 +59,6 @@ if __name__ == "__main__":
     for i in range(num):
         channel_list += get_active_channel(i*limit,limit)
     print(channel_list)
-    
-    ##create a pool for multiprocessing
-    #try:
-    #  nproc = 8
-    #  pool = mp.Pool(processes=nproc)
-    #  response = pool.map(listen_to_channel,channel_list)
-    #  sleep
-    #finally:
-    #  pool.close()
-    #  pool.join()
     
     #  create thread for each channel..
     for item in channel_list:
