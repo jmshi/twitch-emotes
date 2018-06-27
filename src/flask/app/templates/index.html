@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta http-equiv="refresh" content="30">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,12 +63,13 @@
 
       <div class="starter-template">
         <h1>Twitch-Emotes</h1>
-        <p class="lead">short description and usage.</p>
+        <p class="lead">Real-time data pipeline tracking and analyzing Twitch emotes usage.</p>
       </div>
       <table class="table table-hover"> 
-      <tr><th>index</th><th>Attendant</th><th>birth_month</th></tr> 
-      {% for birth in births %} 
-      <tr><td>{{ birth['index'] }}</td><td>{{ birth['attendant']}}</td><td> {{ birth['birth_month'] }}</td></tr> 
+      <thead class="thead-light">
+      <tr><th>channel_name</th><th>global_emotes(free)</th><th>subscriber_emotes(paid)</th></tr> 
+      {% for item in channel %} 
+      <tr><td>{{ item['channel'] }}</td><td>{{ item['global_emotes']}}</td><td> {{ item['subscriber_emotes'] }}</td></tr> 
       {% endfor %} 
       </table> 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
