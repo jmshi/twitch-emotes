@@ -4,7 +4,7 @@ import json
 from pprint import pprint
 import re
 
-
+#parsed the complete global emote set to get id:code and code:id pair
 def global_set():
   with open('emotes_general.json','r') as f:
      data = json.load(f)
@@ -27,6 +27,7 @@ def global_set():
   return
 
 
+#parsed the complete sub emote set to get id:code and code:id pair
 def subscriber_set():
   with open('subscriber.json','r') as f:
      data = json.load(f)

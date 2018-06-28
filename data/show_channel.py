@@ -12,7 +12,7 @@ client = TwitchClient(client_id=config.channel_client_id)
 #set_emoticons = client.chat.get_emoticons_by_set()
 #print(set_emoticons)
 
-
+# test the functionality of twitch api-5.0
 for i in range(1):
   stream  = client.streams.get_live_streams(offset=i*100,limit=100)
   print(stream)
