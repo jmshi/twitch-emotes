@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends "index.html" %} <!--this means that you are extending the base tempate -->
+{% block testop %}
+<div class=container>
+<div class="row">
+<div class="col-xs-6">
+  <h2 class="sub-header">Global emotes (free)</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+      <thead class="thead-light">
+      <tr><th>emote</th><th>count</th></tr> 
+      {% for item in output %} 
+      <tr><td>{{ item['emote'] }}</td><td>{{ item['count']}}</td></tr> 
+      {% endfor %} 
+      </table> 
+      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
+      <script src="static/js/bootstrap.min.js"></script> 
+    </div>
+ </div><!-- side-by-side table -->
+
+<div class="col-2"> </div>
+
+<div class="col-xs-6">
+  <h2 class="sub-header">Subscriber emotes (non-free)</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+      <thead class="thead-light">
+      <tr><th>emote</th><th>count</th></tr> 
+      {% for item in output %} 
+      <tr><td>{{ item['emote'] }}</td><td>{{ item['count']}}</td></tr> 
+      {% endfor %} 
+      </table> 
+      <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
+      <script src="static/js/bootstrap.min.js"></script> 
+    </div>
+ </div><!-- side-by-side table -->
+ </div>
+ </div>
+ {% endblock %}

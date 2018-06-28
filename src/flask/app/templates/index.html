@@ -36,7 +36,6 @@
   </head>
 
   <body>
-  <!--
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -48,8 +47,6 @@
           </button>
           <a class="navbar-brand" href="#">Project name</a>
         </div>
-	-->
-	<!--
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
@@ -58,13 +55,16 @@
           </ul>
         </div>
       </div>
-    </nav> -->
+    </nav> 
     <div class="container">
 
       <div class="starter-template">
         <h1>Twitch-Emotes</h1>
         <p class="lead">Real-time data pipeline tracking and analyzing Twitch emotes usage.</p>
+      {% block test %}{% endblock %}
+      {% block testop %}{% endblock %}
       </div>
+      <!--
       <table class="table table-hover"> 
       <thead class="thead-light">
       <tr><th>channel_name</th><th>global_emotes(free)</th><th>subscriber_emotes(paid)</th></tr> 
@@ -72,6 +72,7 @@
       <tr><td>{{ item['channel'] }}</td><td>{{ item['global_emotes']}}</td><td> {{ item['subscriber_emotes'] }}</td></tr> 
       {% endfor %} 
       </table> 
+      -->
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> 
       <script src="static/js/bootstrap.min.js"></script> 
 

@@ -3,7 +3,7 @@ from flask import jsonify
 from flask_cors import CORS, cross_origin
 import json
 from app import app
-from flask import render_template, render_template_string
+from flask import render_template, request
 import config
 from datetime import datetime,timedelta
 
@@ -22,14 +22,8 @@ def index():
 
 lbp = WhiteListRoundRobinPolicy(config.cass_whitelist)
 # Setting up connections to cassandra
-
-# Change the bolded text to your seed node public dns (no < or > symbols but keep quotations. Be careful to copy quotations as it might copy it as a special character and throw an error. Just delete the quotations and type them in and it should be fine. Also delete this comment line
 cluster = Cluster([config.cass_seedip],load_balancing_policy=lbp)
-#print cluster
-
-# Change the bolded text to the keyspace which has the table you want to query. Same as above for < or > and quotations. Also delete this comment line
 session = cluster.connect(config.cass_keyspace)
-#print session
 
 @app.route('/channel')
 def get_channel():
@@ -55,28 +49,65 @@ def get_channel():
    return render_template('index.html',channel=jsonresponse[:10])
 
 
-@app.route('/emotes/<channel_name>')
-def get_emotes(channel_name):
-   ts = (datetime.utcnow()-timedelta(minutes=10)).strftime("%Y-%m-%d %H:%M:%S")
-   stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
-           +config.cass_keyspace+".time_channel_emotes_count where timestamp > '"+ts+"' and channel='#gladiatorpwnz' and is_free=TRUE GROUP BY emote_name ALLOW FILTERING;"
+@app.route('/emote')
+def emote():
+ return render_template("emote.html")
 
-   response = session.execute(stmt)
-   response_list = []
-   for val in response:
-        response_list.append(val)
-   jsonresponse1 = [{"emote":x.emote_name, "count":x.cnt} for x in response_list]
-   jsonresponse1.sort(key=lambda x: -x['count'])
-   
-   stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
-           +config.cass_keyspace+".time_channel_emotes_count where timestamp > '"+ts+"' and channel='#gladiatorpwnz' and is_free=FALSE GROUP BY emote_name ALLOW FILTERING;"
+@app.route("/emote", methods=['POST'])
+def emote_post():
+ channel_name = request.form["channel_name"]
+ print type(channel_name),channel_name
+ ts = (datetime.utcnow()-timedelta(minutes=10)).strftime("%Y-%m-%d %H:%M:%S")
+ # get the free emotes
+ stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
+           +config.cass_keyspace+".time_channel_emotes_count where timestamp > '"\
+           +ts+"' and channel='#{}' and is_free=TRUE GROUP BY emote_name ALLOW FILTERING;"
+ response = session.execute(stmt.format(channel_name))
+ response_list = []
+ for val in response:
+    response_list.append(val)
+ jsonresponse1 = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
+ jsonresponse1.sort(key=lambda x: -x['count'])
 
-   response = session.execute(stmt)
-   response_list = []
-   for val in response:
-        response_list.append(val)
-   jsonresponse2 = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
-   jsonresponse2.sort(key=lambda x: -x['count'])
-   #return top 10 of jsonify(channel=jsonresponse)
-   return render_template('emote.html',free=jsonresponse1[:10],nonfree=jsonresponse2[:10])
+ # get the non-free emotes
+ stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
+           +config.cass_keyspace+".time_channel_emotes_count where timestamp > '"\
+           +ts+"' and channel='#{}' and is_free=FALSE GROUP BY emote_name ALLOW FILTERING;"
+ response = session.execute(stmt.format(channel_name))
+ response_list = []
+ for val in response:
+    response_list.append(val)
+ jsonresponse2 = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
+ jsonresponse2.sort(key=lambda x: -x['count'])
 
+ return render_template("emoteop.html", free=jsonresponse1[:10],nonfree=jsonresponse2[:10])
+
+
+
+#@app.route('/emotes/<channel_name>')
+#def get_emotes(channel_name):
+#   print type(channel_name)
+#   ts = (datetime.utcnow()-timedelta(minutes=10)).strftime("%Y-%m-%d %H:%M:%S")
+#   stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
+#           +config.cass_keyspace+".time_channel_emotes_count where timestamp > '"+ts+"' and channel='#"+channel_name+"' and is_free=TRUE GROUP BY emote_name ALLOW FILTERING;"
+#
+#   print stmt
+#   response = session.execute(stmt)
+#   response_list = []
+#   for val in response:
+#        response_list.append(val)
+#   print response_list
+#   jsonresponse1 = [{"emote":x.emote_name, "count":x.cnt} for x in response_list]
+#   jsonresponse1.sort(key=lambda x: -x['count'])
+#   
+#   stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
+#           +config.cass_keyspace+".time_channel_emotes_count where timestamp > '"+ts+"' and channel='#"+channel_name+"' and is_free=FALSE GROUP BY emote_name ALLOW FILTERING;"
+#
+#   response = session.execute(stmt)
+#   response_list = []
+#   for val in response:
+#        response_list.append(val)
+#   jsonresponse2 = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
+#   jsonresponse2.sort(key=lambda x: -x['count'])
+#   #return top 10 of jsonify(channel=jsonresponse)
+#   return render_template('emote.html',free=jsonresponse1[:10],nonfree=jsonresponse2[:10])
