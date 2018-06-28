@@ -11,6 +11,7 @@ others/
 others/*
 src/spark/spark-warehouse/
 src/spark/bk/
+src/spark/stdout
 src/kafka-producer/bk/
 src/redis/
 build

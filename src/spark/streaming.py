@@ -16,11 +16,6 @@ import time
 import datetime
 
 
-def storeToRedis(rdd):
-        r = redis.Redis(host=config.redis_address, port=config.redis_port, db=config.redis_dbcount)
-        for data in rdd.collect():
-            r.set(data[0],data[1])
-
 def updateTotalCount(currentState,countState):
     if countState is None:
         countState = 0
@@ -40,157 +35,126 @@ def load_subemotes():
 
 
 def main():
-        sc = SparkContext(appName="Twitchatter")
-        sc.setLogLevel('ERROR')
-        # broadcast the emotes set
-        global_emotes = sc.broadcast(load_emotes())
-        #print(global_emotes.value.keys())
-        sub_emotes = sc.broadcast(load_subemotes())
-        #print(sub_emotes.value.keys()[:10])
+    sc = SparkContext(appName="Twitchatter")
+    sc.setLogLevel('ERROR')
+    # broadcast the emotes set
+    global_emotes = sc.broadcast(load_emotes())
+    #print(global_emotes.value.keys())
+    sub_emotes = sc.broadcast(load_subemotes())
+    #print(sub_emotes.value.keys()[:10])
 
-        batch_duration = 5
-        ssc = StreamingContext(sc, 5) # every 3 seconds per batch
-        # set checkpoint directory:use default fs protocol in core-site.xml
-        ssc.checkpoint("hdfs://"+config.spark_ckpt)
+    batch_duration = 5
+    ssc = StreamingContext(sc, 5) # every 3 seconds per batch
+    # set checkpoint directory:use default fs protocol in core-site.xml
+    ssc.checkpoint("hdfs://"+config.spark_ckpt)
 
-        zkQuorum = [config.zk_address]
-        topic = [config.topic]
-        print("{}{}".format(zkQuorum,topic))
-       
-        partition = 0
-        start = 0
-        topicpartition = TopicAndPartition(topic[0],partition)
-        
-        kvs = KafkaUtils.createDirectStream(ssc,topic,{"metadata.broker.list": config.ip_address})
-        # uncomment the following if running sum
-        #kvs = KafkaUtils.createDirectStream(ssc,topic,{"metadata.broker.list": config.ip_address},
-        #        fromOffsets={topicpartition: int(start)})
-        #kvs.checkpoint(600)
-        #kvs.pprint()
-        
-        parsed = kvs.map(lambda v: json.loads(v[1]))
-        
-        # (1) searching for global emotes
-        def get_emotes_count(x):
-            line = x.split(" ")
-            words = [item.encode('utf-8') for item in line]
-            emotes = [item for item in words if item in global_emotes.value.keys()]
-            return dict(Counter(emotes))
-        
-        def sum_dict(x,y):
-            return {k: x.get(k, 0) + y.get(k, 0) for k in set(x) | set(y)}
-        def sub_dict(x,y):
-            return {k: x.get(k, 0) - y.get(k, 0) for k in set(x) | set(y)}
+    zkQuorum = [config.zk_address]
+    topic = [config.topic]
+    print("{}{}".format(zkQuorum,topic))
+    
+    partition = 0
+    start = 0
+    topicpartition = TopicAndPartition(topic[0],partition)
+    
+    kvs = KafkaUtils.createDirectStream(ssc,topic,{"metadata.broker.list": config.ip_address})
+    # uncomment the following if running sum
+    #kvs = KafkaUtils.createDirectStream(ssc,topic,{"metadata.broker.list": config.ip_address},
+    #        fromOffsets={topicpartition: int(start)})
+    #kvs.checkpoint(600)
+    
+    parsed = kvs.map(lambda v: json.loads(v[1]))
+    
+    window_duration,sliding_duration = 60,20
+    # (1) total count of emotes for given channel
+    def get_emotes_count(x):
+        line = x.split(" ")
+        words = [item.encode('utf-8') for item in line]
+        emotes = [item for item in words if item in global_emotes.value.keys()]
+        return dict(Counter(emotes))
+    
+    def sum_dict(x,y):
+        return {k: x.get(k, 0) + y.get(k, 0) for k in set(x) | set(y)}
+    def sub_dict(x,y):
+        return {k: x.get(k, 0) - y.get(k, 0) for k in set(x) | set(y)}
 
-        def get_count(x):
-            line = x.split(" ")
-            words = [item.encode('utf-8') for item in line]
-            emotes = [item for item in words if item in global_emotes.value.keys()]
-            subemotes = [item for item in words if item in sub_emotes.value.keys()]
-            return [len(emotes),len(subemotes)]
-        def sum_list(x,y):
-            return [x[0]+y[0],x[1]+y[1]]
-        def sub_list(x,y):
-            return [x[0]-y[0],x[1]-y[1]]
+    def get_count(x):
+        line = x.split(" ")
+        words = [item.encode('utf-8') for item in line]
+        emotes = [item for item in words if item in global_emotes.value.keys()]
+        subemotes = [item for item in words if item in sub_emotes.value.keys()]
+        return [len(emotes),len(subemotes)]
+    def sum_list(x,y):
+        return [x[0]+y[0],x[1]+y[1]]
+    def sub_list(x,y):
+        return [x[0]-y[0],x[1]-y[1]]
 
-        window_duration,sliding_duration = 60,20
-        channel_count_time = parsed.map(lambda v: (v[u'channel'],v[u'message']))\
-                                    .mapValues(get_count)\
-                                    .reduceByKeyAndWindow(sum_list,sub_list,window_duration,sliding_duration)\
-                                    .map(lambda v: {"channel":v[0],"global_emotes":v[1][0],"subscriber_emotes":v[1][1],"total_emotes":(v[1][0]+v[1][1]),"timestamp":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")})
-        channel_count_time.pprint()
+    channel_count_time = parsed.map(lambda v: (v[u'channel'],v[u'message']))\
+                               .mapValues(get_count)\
+                               .reduceByKeyAndWindow(sum_list,sub_list,window_duration,sliding_duration)\
+                               .map(lambda v: {"channel":v[0],\
+                                               "global_emotes":v[1][0],\
+                                               "subscriber_emotes":v[1][1],\
+                                               "total_emotes":(v[1][0]+v[1][1]),\
+                                               "timestamp":datetime.datetime.now()\
+                                               .strftime("%Y-%m-%d %H:%M:%S")})
+    #channel_count_time.pprint()
+
+    # 2) get individual emotes count for given channel
+    channel_message = parsed.map(lambda v: [(v[u'channel'],word) \
+                                 for word in v[u'message'].split(" ")])\
+                                 .flatMap(lambda x: x)
+    #channel_message.pprint()
+
+    def get_global(x):
+        if x[1] in global_emotes.value.keys():
+            return True
+        else:
+            return False
+    def get_sub(x):
+        if x[1] in sub_emotes.value.keys():
+            return True
+        else:
+            return False
+    channel_emotes = channel_message.filter(get_global)\
+                                    .map(lambda v: (v[0],v[1],True))
+    #channel_emotes.pprint()
+    channel_subemotes = channel_message.filter(get_sub)\
+                                    .map(lambda v: (v[0],v[1],False))
+    #channel_subemotes.pprint()
+
+    time_channel_emotes_count = channel_emotes.union(channel_subemotes)\
+                                              .map(lambda v: ((v[0],v[1],v[2]),1))\
+                                              .reduceByKeyAndWindow(lambda x,y: x+y,lambda x,y:x-y,\
+                                                                    window_duration, sliding_duration)\
+                                              .map(lambda v: { "timestamp":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),\
+                                                               "channel":v[0][0],\
+                                                               "emote_name":v[0][1],\
+                                                               "is_free":v[0][2],\
+                                                               "count":v[1],\
+                                                               })
+    #time_channel_emotes_count.pprint()
+    
+    # connect to cassandra cluster
+    cluster = Cluster([config.cass_seedip])
+    session = cluster.connect()
+
+    # create and set cassandra keyspace to work only once. 
+    session.execute("CREATE KEYSPACE IF NOT EXISTS "+ config.cass_keyspace +" WITH replication = {'class':                 'SimpleStrategy', 'replication_factor': '3'};")
+    session.set_keyspace(config.cass_keyspace)
+
+    # create tables to insert data
+    session.execute("CREATE TABLE IF NOT EXISTS channel_count_time (channel text, global_emotes int, subscriber_emotes int, total_emotes int, timestamp text, primary key(channel,timestamp));")
+
+    channel_count_time.saveToCassandra(config.cass_keyspace,"channel_count_time")
+
+    session.execute("CREATE TABLE IF NOT EXISTS time_channel_emotes_count (timestamp text, channel text, emote_name text, is_free boolean, count int, primary key(emote_name,timestamp));")
+
+    time_channel_emotes_count.saveToCassandra(config.cass_keyspace,"time_channel_emotes_count")
 
 
-        #total_msg_counts = parsed.map(lambda v: (v[u'channel'],1)).updateStateByKey(updateTotalCount)
-        #print(total_msg_counts)
-        #total_msg_counts.pprint()
-
-        ##total_user_counts = parsed.map(lambda v: (v[u'username'],1)).updateStateByKey(updateTotalCount)
-        ##total_user_counts.pprint()
-
-#        # 1) dump data to redis
-#        total_msg_counts.foreachRDD(storeToRedis)
-#
-#        #total_msg_counts.foreachRDD(lambda rdd: rdd.foreachPartition(storeToRedis))
-#        #parsed.foreachRDD(lambda rdd: rdd.foreachPartition(storeToRedis))
-#
-        # 2) dump data to cassandra
-        #time_channel_user = parsed.map(lambda v: {"timestamp":v['time'],"channel":v[u'channel'],"username":v[u'username']})
-
-        # connect to cassandra cluster
-        cluster = Cluster([config.cass_seedip])
-        session = cluster.connect()
-
-        # create and set cassandra keyspace to work
-        # only once. 
-        session.execute("CREATE KEYSPACE IF NOT EXISTS "+ config.cass_keyspace +" WITH replication = {'class':                 'SimpleStrategy', 'replication_factor': '3'};")
-        session.set_keyspace(config.cass_keyspace)
-
-        # create tables to insert data
-        #session.execute("CREATE TABLE IF NOT EXISTS channel_count_time (channel text, emote_list list<int>, timestamp text, primary key(channel,timestamp));")
-        session.execute("CREATE TABLE IF NOT EXISTS channel_count_time (channel text, global_emotes int, subscriber_emotes int, total_emotes int, timestamp text, primary key(channel,timestamp));")
-
-        channel_count_time.saveToCassandra(config.cass_keyspace,"channel_count_time")
-
-
-
-        ssc.start()
-        ssc.awaitTermination()
-
-        ##Kafka streams from source are as "key":"value"..etc.
-	#df.printSchema()
-        #
-        ##Select key:value and discard others
-        ##value schema: {"username":"xxx","message":"xxx","channel":"xxx","time":"xxx"}
-        #schema = StructType().add("username",StringType()).add("message",StringType()).add("channel",StringType()).add("time",StringType())
-        #ds = df.selectExpr("CAST(value AS STRING)") \
-        #       .select(f.from_json("value",schema).alias("message")) \
-        #       .select("message.*")
-        #ds.printSchema()
-        ## uncomment to see data flowing in
-        ##query = ds.writeStream.outputMode("append").format("console").start()
-        ##query.awaitTermination()
-
-        ## write is not available for streaming data; we use create_table to create table and keyspaces
-        ##ds.write.format("org.apache.spark.sql.cassandra").options(table="rawtable",keyspace="test").save(mode="append")
-        #
-        ## again structured stream does not provide savetocassandra functionality
-        ##ds.saveToCassandra("test","rawtable")
-        #
-        ## dump data to parquet files
-        #query = ds.writeStream \
-        #  .format("parquet") \
-        #  .option("startingOffsets", "earliest") \
-        #  .option("checkpointLocation", "/home/ubuntu/twitchatter/test/check/") \
-        #  .option("path", "/home/ubuntu/Downloads") \
-        #  .start()
-        #query.awaitTermination()
-        #	
-        ## Do some simple count: unique user count per channel
-        #user_count = ds.groupBy("channel","username").count()
-        ##user_count.write.format("org.apache.spark.sql.cassandra").options(table="protable",keyspace="test").save(mode="append")
-        ##user_count.saveToCassandra("test","protable")
-
-        ## write to cassandra 
-        ## https://docs.datastax.com/en/dse/6.0/dse-dev/datastax_enterprise/spark/structuredStreaming.html
-        ##query = user_count.writeStream\
-        ## .option("checkpointLocation", '/home/ubuntu/twitchatter/test/')\
-        ## .format("org.apache.spark.sql.cassandra")\
-        ## .option("keyspace", "analytics")\
-        ## .option("table", "test")\
-        ## .start()
+    ssc.start()
+    ssc.awaitTermination()
 
 
 if __name__ == '__main__':
-    #r = redis.StrictRedis(host=config.redis_address, port=config.redis_port, db=0)
-    #r.set('foo', 'bar')
-    #r.get('foo')
     main()
-
-        ###emotes_count = parsed.map(lambda v: v[u'message'])\
-        ###              .flatMap(lambda msg: msg.split(" "))\
-        ###              .map(lambda x: x.encode('utf-8'))\
-        ###              .filter(lambda x: x in global_emotes.value.keys())
-        ####              .map(lambda emote: (emote,1))\
-        ####              .reduceByKey(lambda x,y: x+y)
-        ###emotes_count.pprint()
