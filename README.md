@@ -8,7 +8,7 @@
 
 # Code Description
 A real-time data pipeline for analyzing twitch chat data. Specially designed to track and analyze the global (free) and subscribed 
-(non-free) emotes embedded in chat messages from up to 1000 active channels. 
+(non-free) emotes embedded in chat messages from up to 1000 active channels. Written mostly in python.
 
 # Pipeline Architecture
 <p align="center">
