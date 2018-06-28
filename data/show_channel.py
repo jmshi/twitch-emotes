@@ -1,7 +1,8 @@
 from twitch import TwitchClient
+import config
 
-client = TwitchClient(client_id='v11nmjkij546e998o54vamwkjknxvr')
-channel = client.channels.get_by_id(44322889)
+client = TwitchClient(client_id=config.channel_client_id)
+#channel = client.channels.get_by_id(44322889)
 #print(channel.id)
 #print(channel.name)
 #print(channel.display_name)
