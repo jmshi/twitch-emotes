@@ -134,21 +134,7 @@ def main():
                                                                })
     #time_channel_emotes_count.pprint()
     
-    # connect to cassandra cluster
-    cluster = Cluster([config.cass_seedip])
-    session = cluster.connect()
-
-    # create and set cassandra keyspace to work only once. 
-    session.execute("CREATE KEYSPACE IF NOT EXISTS "+ config.cass_keyspace +" WITH replication = {'class':                 'SimpleStrategy', 'replication_factor': '3'};")
-    session.set_keyspace(config.cass_keyspace)
-
-    # create tables to insert data
-    session.execute("CREATE TABLE IF NOT EXISTS channel_count_time (channel text, global_emotes int, subscriber_emotes int, total_emotes int, timestamp text, primary key(channel,timestamp));")
-
     channel_count_time.saveToCassandra(config.cass_keyspace,"channel_count_time")
-
-    session.execute("CREATE TABLE IF NOT EXISTS time_channel_emotes_count (timestamp text, channel text, emote_name text, is_free boolean, count int, primary key(emote_name,timestamp));")
-
     time_channel_emotes_count.saveToCassandra(config.cass_keyspace,"time_channel_emotes_count")
 
 
@@ -157,4 +143,18 @@ def main():
 
 
 if __name__ == '__main__':
+    # connect to cassandra cluster
+    cluster = Cluster([config.cass_seedip])
+    session = cluster.connect()
+
+    # create and set cassandra keyspace to work only once. 
+    session.execute("CREATE KEYSPACE IF NOT EXISTS "+ config.cass_keyspace +\
+            " WITH replication = {'class':'SimpleStrategy', 'replication_factor': '3'};")
+    session.set_keyspace(config.cass_keyspace)
+
+    # create tables to insert data
+    session.execute("CREATE TABLE IF NOT EXISTS channel_count_time (channel text, global_emotes int, subscriber_emotes int, total_emotes int, timestamp text, primary key(channel,timestamp));")
+
+    session.execute("CREATE TABLE IF NOT EXISTS time_channel_emotes_count (timestamp text, channel text, emote_name text, is_free boolean, count int, primary key(emote_name,timestamp));")
+
     main()
