@@ -1,0 +1,13 @@
+{% extends "index.html" %} <!--this means that you are extending the base tempate -->
+{% block channel %}
+<div class=container>
+      <table class="table table-hover"> 
+      <thead class="thead-light">
+      <tr><th>channel_name</th><th>global_emotes(free)</th><th>subscriber_emotes(paid)</th></tr> 
+      {% for item in channel %} 
+      <!--<tr><td>{{ item['channel'] }}</td><td>{{ item['global_emotes']}}</td><td> {{ item['subscriber_emotes'] }}</td></tr> --> 
+      <tr><td><a href="emote/{{ item['channel'] }}">{{ item['channel'] }}</a></td><td>{{ item['global_emotes']}}</td><td> {{ item['subscriber_emotes'] }}</td></tr> 
+      {% endfor %} 
+      </table> 
+ </div>
+{% endblock %}

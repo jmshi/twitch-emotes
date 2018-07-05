@@ -11,7 +11,7 @@ class MainHandler(RequestHandler):
    self.write("This message comes from Tornado ^_^")
 
 tr = WSGIContainer(app)
-logging.getLogger('tornado.access').disabled = True
+logging.getLogger('tornado.access').disabled = False #True
 application = Application([
 (r"/tornado", MainHandler),
 (r".*", FallbackHandler, dict(fallback=tr)),

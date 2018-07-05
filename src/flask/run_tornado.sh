@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo -E python tornadoapp.py >& stdout&
+sudo -E python tornadoapp.py >& stdout &
