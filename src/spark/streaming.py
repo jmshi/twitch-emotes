@@ -23,12 +23,14 @@ def updateTotalCount(currentState,countState):
 
 def load_emotes():
     with open(config.data_dir+'global_emotes_count.json','r') as f:
+    #with open(config.data_dir+'/emotes_set/global_code_id.json','r') as f:
         data = json.load(f)
     f.close
     return data
 
 def load_subemotes():
     with open(config.data_dir+'sub_emotes_count.json','r') as f:
+    #with open(config.data_dir+'/emotes_set/subscriber_code_id.json','r') as f:
         data = json.load(f)
     f.close
     return data
@@ -43,8 +45,8 @@ def main():
     sub_emotes = sc.broadcast(load_subemotes())
     #print(sub_emotes.value.keys()[:10])
 
-    batch_duration = 5
-    ssc = StreamingContext(sc, 5) # every 3 seconds per batch
+    batch_duration = 6
+    ssc = StreamingContext(sc, batch_duration) # every 3 seconds per batch
     # set checkpoint directory:use default fs protocol in core-site.xml
     ssc.checkpoint("hdfs://"+config.spark_ckpt)
 
@@ -64,12 +66,13 @@ def main():
     
     parsed = kvs.map(lambda v: json.loads(v[1]))
     
-    window_duration,sliding_duration = 60,20
+    window_duration,sliding_duration = 12,12
     # (1) total count of emotes for given channel
     def get_emotes_count(x):
         line = x.split(" ")
         words = [item.encode('utf-8') for item in line]
-        emotes = [item for item in words if item in global_emotes.value.keys()]
+        emotes = [item for item in words if item in global_emotes.value]
+        #emotes = [item for item in words if item in global_emotes.value.keys()]
         return dict(Counter(emotes))
     
     def sum_dict(x,y):
@@ -80,8 +83,10 @@ def main():
     def get_count(x):
         line = x.split(" ")
         words = [item.encode('utf-8') for item in line]
-        emotes = [item for item in words if item in global_emotes.value.keys()]
-        subemotes = [item for item in words if item in sub_emotes.value.keys()]
+        #emotes = [item for item in words if item in global_emotes.value.keys()]
+        #subemotes = [item for item in words if item in sub_emotes.value.keys()]
+        emotes = [item for item in words if item in global_emotes.value]
+        subemotes = [item for item in words if item in sub_emotes.value]
         return [len(emotes),len(subemotes)]
     def sum_list(x,y):
         return [x[0]+y[0],x[1]+y[1]]
@@ -106,12 +111,14 @@ def main():
     #channel_message.pprint()
 
     def get_global(x):
-        if x[1] in global_emotes.value.keys():
+        if x[1] in global_emotes.value:
+        #if x[1] in global_emotes.value.keys():
             return True
         else:
             return False
     def get_sub(x):
-        if x[1] in sub_emotes.value.keys():
+        if x[1] in sub_emotes.value:
+        #if x[1] in sub_emotes.value.keys():
             return True
         else:
             return False
