@@ -36,12 +36,15 @@ sub_dict = load_json(config.data_dir+'/reduced_sub_code_id.json')
 #sub_dict = load_json(config.data_dir+'/emotes_set/subscriber_code_id.json')
 
 
-@app.route('/')
 @app.route('/index')
 def index():
    user = { 'nickname': 'twitch-emotes' } # fake user
    return render_template("index.html",title = 'Home', user = user)
 
+@app.route('/')
+@app.route('/home')
+def home():
+   return render_template("home.html")
 
 @app.route('/channel')
 def get_channel():

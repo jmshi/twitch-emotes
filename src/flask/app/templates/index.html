@@ -51,16 +51,17 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/channel">Channel</a>
+            <a class="nav-link" href="/channel">Channels</a>
           </li>
-	  <!--
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Emotes</a>
+            <a class="nav-link disabled" href="http://twitch-emotes.us:8050/">Live-Graphs</a>
           </li>
-	  -->
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">WorldCup2018</a>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
@@ -73,7 +74,7 @@
 
       <div class="starter-template">
         <h1>Twitch-Emotes</h1>
-        <p class="lead">Real-time data pipeline tracking and analyzing Twitch emotes usage.</p>
+      {% block home %}{% endblock %}
       {% block channel %}{% endblock %}
       <!-- {% block emote %}{% endblock %} -->
       {% block emoteop %}{% endblock %}

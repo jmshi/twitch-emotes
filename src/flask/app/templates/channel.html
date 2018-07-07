@@ -2,8 +2,9 @@
 {% block channel %}
 <div class=container>
       <table class="table table-hover"> 
+      <h2> Top 10 channels with most emotes (in the past 10 mins)</h2>
       <thead class="thead-light">
-      <tr><th>channel_name</th><th>global_emotes(free)</th><th>subscriber_emotes(paid)</th></tr> 
+      <tr><th>Channel Name</th><th>Free Emotes</th><th>Paid Emotes</th></tr> 
       {% for item in channel %} 
       <!--<tr><td>{{ item['channel'] }}</td><td>{{ item['global_emotes']}}</td><td> {{ item['subscriber_emotes'] }}</td></tr> --> 
       <tr><td><a href="emote/{{ item['channel'] }}">{{ item['channel'] }}</a></td><td>{{ item['global_emotes']}}</td><td> {{ item['subscriber_emotes'] }}</td></tr> 

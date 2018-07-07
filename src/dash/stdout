@@ -1,0 +1,152 @@
+ * Serving Flask app "live" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://0.0.0.0:8050/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 187-529-304
+69.141.121.153 - - [07/Jul/2018 04:54:24] "GET / HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:54:24] "GET /_dash-layout HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:54:24] "GET /_dash-dependencies HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:54:24] "POST /_dash-update-component HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 79, in update_graph_scatter
+    result = get_data(yaxis_column_name,xaxis_column_name)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 63, in get_data
+    ts = (datetime.utcnow()-timedelta(minutes=toffset_min)).strftime("%Y-%m-%d %H:%M:%S")
+TypeError: unsupported type for timedelta minutes component: unicode
+69.141.121.153 - - [07/Jul/2018 04:54:30] "POST /_dash-update-component HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 79, in update_graph_scatter
+    result = get_data(yaxis_column_name,xaxis_column_name)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 63, in get_data
+    ts = (datetime.utcnow()-timedelta(minutes=toffset_min)).strftime("%Y-%m-%d %H:%M:%S")
+TypeError: unsupported type for timedelta minutes component: unicode
+69.141.121.153 - - [07/Jul/2018 04:54:35] "POST /_dash-update-component HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 79, in update_graph_scatter
+    result = get_data(yaxis_column_name,xaxis_column_name)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 63, in get_data
+    ts = (datetime.utcnow()-timedelta(minutes=toffset_min)).strftime("%Y-%m-%d %H:%M:%S")
+TypeError: unsupported type for timedelta minutes component: unicode
+69.141.121.153 - - [07/Jul/2018 04:54:40] "POST /_dash-update-component HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 79, in update_graph_scatter
+    result = get_data(yaxis_column_name,xaxis_column_name)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 63, in get_data
+    ts = (datetime.utcnow()-timedelta(minutes=toffset_min)).strftime("%Y-%m-%d %H:%M:%S")
+TypeError: unsupported type for timedelta minutes component: unicode
+69.141.121.153 - - [07/Jul/2018 04:54:41] "POST /_dash-update-component HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 99, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [07/Jul/2018 04:54:44] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:54:45] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:54:50] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:54:55] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:55:00] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:55:05] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [07/Jul/2018 04:55:10] "POST /_dash-update-component HTTP/1.1" 200 -

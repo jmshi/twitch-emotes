@@ -1,5 +1,7 @@
 config.py
 *.pyc
+*.BK
+stdout
 .coverage
 .cache/
 obsolete/
