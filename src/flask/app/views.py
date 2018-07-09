@@ -7,6 +7,12 @@ from flask import render_template, request
 from datetime import datetime,timedelta
 import sqlite3
 import config
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdate
+import io,base64
 
 CORS(app)
 # importing Cassandra modules from the driver we just installed
@@ -34,6 +40,7 @@ global_dict = load_json(config.data_dir+'/reduced_global_code_id.json')
 sub_dict = load_json(config.data_dir+'/reduced_sub_code_id.json')
 #global_dict = load_json(config.data_dir+'/emotes_set/global_code_id.json')
 #sub_dict = load_json(config.data_dir+'/emotes_set/subscriber_code_id.json')
+footy_dict = load_json(config.data_dir+'/world_cup.json')
 
 
 @app.route('/index')
@@ -100,6 +107,118 @@ def get_emotes(channel_name):
  nonfree = jsonresponse2[:10]
  
  return render_template("emoteop.html", channel_name=channel_name,free=free,nonfree=nonfree)
+
+@app.route('/footy')
+def get_footy():
+    # get the top n footies
+    stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
+           +config.cass_keyspace+".time_footy_count GROUP BY emote_name;"
+    response = session.execute(stmt)
+    response_list = []
+    for val in response:
+       response_list.append(val)
+    jsonresponse = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
+    jsonresponse.sort(key=lambda x: -x['count'])
+    footy_list = jsonresponse[:10]
+    for item in footy_list:
+        item["count"] *=5
+        if item["emote"] in footy_dict:
+          item["id"] = footy_dict[item["emote"]]
+        else:
+          item["id"] = "1077156" # didnt find huh?
+    return render_template("footy.html",footy=footy_list)
+
+
+@app.route('/footy/fig')
+def build_plot():
+    img = io.BytesIO()
+
+    # get the top n footies
+    stmt = "SELECT emote_name,SUM(count) AS cnt FROM "\
+           +config.cass_keyspace+".time_footy_count GROUP BY emote_name;"
+    response = session.execute(stmt)
+    response_list = []
+    for val in response:
+       response_list.append(val)
+    jsonresponse = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
+    jsonresponse.sort(key=lambda x: -x['count'])
+
+    top_n = 5
+    top_list = [item["emote"] for item in jsonresponse[:top_n]]
+    top_list1 = ["'"+item["emote"]+"'" for item in jsonresponse[:top_n]]
+    #print top_list
+    #print top_list1
+    # get the time evolution of top footies
+    stmt = "SELECT emote_name,timestamp,count FROM "\
+              +config.cass_keyspace+".time_footy_count where emote_name IN ("\
+              +", ".join(top_list1)+");"
+    response = session.execute(stmt)
+    response_list = []
+    for val in response:
+       response_list.append(val)
+    jsonresponse = [{"emote":x.emote_name,"time":x.timestamp,"count":x.count} for x in response_list]
+
+    epoch=datetime(1970,1,1)
+    def time_to_int(time):
+        return mdate.epoch2num((datetime.strptime(time, "%Y-%m-%d %H:%M:%S")-epoch).total_seconds())
+
+    t0,v0 = [],[]
+    t1,v1 = [],[]
+    t2,v2 = [],[]
+    t3,v3 = [],[]
+    t4,v4 = [],[]
+    for item in jsonresponse:
+        if item["emote"]==top_list[0]:
+           t0.append(time_to_int(item["time"]))
+           v0.append(item["count"])
+        if item["emote"]==top_list[1]:
+           t1.append(time_to_int(item["time"]))
+           v1.append(item["count"])
+        if item["emote"]==top_list[2]:
+           t2.append(time_to_int(item["time"]))
+           v2.append(item["count"])
+        if item["emote"]==top_list[3]:
+           t3.append(time_to_int(item["time"]))
+           v3.append(item["count"])
+        if item["emote"]==top_list[4]:
+           t4.append(time_to_int(item["time"]))
+           v4.append(item["count"])
+    
+    #do running sum
+    fig,ax = plt.subplots()
+    for i in range(5):
+        if i==0:
+          x,y=np.array(t0),np.array(v0)
+        if i==1: 
+          x,y=np.array(t1),np.array(v1)
+        if i==2:
+          x,y=np.array(t2),np.array(v2)
+        if i==3:
+          x,y=np.array(t3),np.array(v3)
+        if i==4:
+          x,y=np.array(t4),np.array(v4)
+
+        ax.plot_date(x,5*np.cumsum(y),'-',label=top_list[i])
+
+    # Choose your xtick format string
+    date_fmt = '%Y-%m-%d %H:%M:%S'
+
+    # Use a DateFormatter to set the data to the correct format.
+    date_formatter = mdate.DateFormatter(date_fmt)
+    ax.xaxis.set_major_formatter(date_formatter)
+    
+    # Sets the tick labels diagonal so they fit easier.
+    fig.autofmt_xdate()
+
+    ax.set_ylabel("Running Sum")
+    plt.legend(loc=2)
+
+    plt.savefig(img, format='png')
+    img.seek(0)
+
+    #return send_file(img,mimetype='image/png')
+    plot_url = base64.b64encode(img.getvalue()).decode()
+    return '<img src="data:image/png;base64,{}">'.format(plot_url)
 
 
 

@@ -20,8 +20,10 @@ cluster = Cluster([config.cass_seedip],load_balancing_policy=lbp)
 session = cluster.connect(config.cass_keyspace)
 
 
+app = dash.Dash(__name__)
 
 def get_top_channel():
+   print "call this func"
    ts = (datetime.utcnow()-timedelta(minutes=10)).strftime("%Y-%m-%d %H:%M:%S")
    stmt = "SELECT channel,SUM(global_emotes) AS globl, SUM(subscriber_emotes) AS sub, SUM(total_emotes) as total FROM "\
            +config.cass_keyspace+".channel_count_time where timestamp > '"+ts+"' GROUP BY channel ALLOW FILTERING;"
@@ -34,29 +36,33 @@ def get_top_channel():
    #return top 10 of jsonify(channel=jsonresponse)
    return [item["channel"] for item in jsonresponse[:10]]
 
-
-app = dash.Dash(__name__)
-app.layout = html.Div([
-        html.Div([
-        dcc.Dropdown(id='yaxis-column',
-            options=[{'label': i, 'value': i} for i in get_top_channel()],
-            value='Number of Emotes (Free vs. Paid)'
-            ),
-        dcc.Dropdown(id='xaxis-column',
-            options=[{'label':'1 min','value': 1},
-                     {'label':'10 min','value': 10},
-                     {'label':'1 hour','value': 60}],
-            value='duration'
-            )
-        ],style={'width': '30%', 'display': 'inline-block'}),
+def serve_layout():
+  layout = html.Div([
+           html.Div([
+           dcc.Dropdown(id='yaxis-column',
+               options=[{'label': i, 'value': i} for i in get_top_channel()],
+               value='blank'
+               ),
+           dcc.Dropdown(id='xaxis-column',
+               options=[{'label':'1 min','value': 1},
+                        {'label':'10 min','value': 10},
+                        {'label':'1 hour','value': 60}],
+               value=1
+               )
+           ],style={'width': '30%', 'display': 'inline-block'}),
  
-        html.Div([
-        dcc.Graph(id='live-graph', animate=True),
-        dcc.Interval(
-            id='graph-update',
-            interval=5*1000
-        ),])
-        ])
+           html.Div([
+           dcc.Graph(id='live-graph', animate=True),
+           dcc.Interval(
+               id='graph-update',
+               interval=5*1000
+           ),])
+           ])
+  return layout
+
+# this is crucial serve_layout instead of serve_layout()
+app.layout = serve_layout
+
 
 def get_data(channel_name='ninja',toffset_min=10):
    #ts = (datetime.utcnow()-timedelta(minutes=1)).strftime("%Y-%m-%d %H:%M:%S")
