@@ -137,12 +137,24 @@ def main():
                                                                "channel":v[0][0],\
                                                                "emote_name":v[0][1],\
                                                                "is_free":v[0][2],\
-                                                               "count":v[1],\
-                                                               })
+                                                               "count":v[1]})
     #time_channel_emotes_count.pprint()
+    # 3) get world cup Footy emotes count for all channels
+    footy_count = parsed.flatMap(lambda v: v[u'message'].split(" "))\
+                            .filter(lambda x: 'Footy' in x)\
+                            .map(lambda x: (x,1))\
+                            .reduceByKeyAndWindow(lambda x,y: x+y,lambda x,y:x-y,\
+                                              window_duration, sliding_duration)\
+                            .map(lambda v: { "timestamp":datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), \
+                            "emote_name":v[0],\
+                            "count":v[1]})
     
+
+
+
     channel_count_time.saveToCassandra(config.cass_keyspace,"channel_count_time")
     time_channel_emotes_count.saveToCassandra(config.cass_keyspace,"time_channel_emotes_count")
+    footy_count.saveToCassandra(config.cass_keyspace,"time_footy_count")
 
 
     ssc.start()
@@ -164,4 +176,5 @@ if __name__ == '__main__':
 
     session.execute("CREATE TABLE IF NOT EXISTS time_channel_emotes_count (timestamp text, channel text, emote_name text, is_free boolean, count int, primary key(emote_name,timestamp));")
 
+    session.execute("CREATE TABLE IF NOT EXISTS time_footy_count (timestamp text, emote_name text, count int, primary key(emote_name,timestamp));")
     main()

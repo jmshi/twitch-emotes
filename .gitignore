@@ -17,6 +17,7 @@ src/spark/stdout
 src/kafka-producer/bk/
 src/redis/
 src/flask/others/
+src/dash/stdout
 build
 dist
 others/
