@@ -55,7 +55,7 @@ if __name__ == "__main__":
 
     #get 1000 live channels
     channel_list = []
-    num,limit = 1,100 #targeting 10,100
+    num,limit = 5,100 #targeting 10,100
     for i in range(num):
         channel_list += get_active_channel(i*limit,limit)
     print(channel_list)
