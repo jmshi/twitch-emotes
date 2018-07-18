@@ -3,19 +3,14 @@ call this func
  * Environment: production
    WARNING: Do not use the development server in a production environment.
    Use a production WSGI server instead.
- * Debug mode: on
- * Running on http://0.0.0.0:8050/ (Press CTRL+C to quit)
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 187-529-304
-173.230.66.78 - - [09/Jul/2018 03:19:58] "POST /_dash-update-component HTTP/1.1" 500 -
+ * Debug mode: off
+ * Running on http://0.0.0.0:8000/ (Press CTRL+C to quit)
+69.141.121.153 - - [17/Jul/2018 02:40:01] "GET / HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:01] "GET /_dash-dependencies HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:01] "GET /_dash-layout HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:01] "GET /favicon.ico HTTP/1.1" 200 -
+[2018-07-17 02:40:01,897] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -30,18 +25,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 104, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:00] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:03] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 02:40:01] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 02:40:07,002] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -56,18 +45,27 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 104, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:04] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:08] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 02:40:07] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 02:40:09] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:12] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:13] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:18] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:18] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:24] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:26] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:29] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:34] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:39] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:44] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 02:40:49] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 03:54:09] "GET / HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 03:54:10] "GET /_dash-dependencies HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 03:54:10] "GET /_dash-layout HTTP/1.1" 200 -
+[2018-07-17 03:54:10,603] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -82,18 +80,20 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 104, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:09] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:13] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 03:54:10] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 03:54:13] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 03:54:15] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 03:54:17] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 03:54:20] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 11:41:38] "GET / HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 11:41:41] "GET /_dash-layout HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 11:41:41] "GET /_dash-dependencies HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 11:41:41] "GET /favicon.ico HTTP/1.1" 200 -
+[2018-07-17 11:41:41,880] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -108,18 +108,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 104, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:14] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:18] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:41:41] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:41:58,203] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -134,24 +128,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 104, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:19] "POST /_dash-update-component HTTP/1.1" 200 -
- * Detected change in '/home/ubuntu/twitch-emotes/src/dash/live.py', reloading
-call this func
- * Restarting with stat
- * Debugger is active!
- * Debugger PIN: 187-529-304
-173.230.66.78 - - [09/Jul/2018 03:20:25] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:28] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:41:58] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:41:59,204] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -166,18 +148,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:29] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:33] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:41:59] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:42:33,284] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -192,18 +168,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:34] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:38] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:42:33] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:42:33,458] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -218,18 +188,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:39] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:43] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:42:33] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:42:33,550] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -244,18 +208,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:44] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:48] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:42:33] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:16,760] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -270,18 +228,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:49] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:53] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:16] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:16,856] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -296,18 +248,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:54] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:20:58] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:16] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:16,969] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -322,18 +268,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:20:59] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:03] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:16] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,005] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -348,18 +288,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:04] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:08] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,103] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -374,18 +308,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:09] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:13] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,130] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -400,18 +328,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:15] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:18] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,275] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -426,18 +348,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:19] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:23] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,351] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -452,18 +368,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:24] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:28] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,391] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -478,18 +388,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:30] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:33] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,449] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -504,18 +408,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:34] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:38] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,556] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -530,18 +428,12 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:39] "POST /_dash-update-component HTTP/1.1" 200 -
-173.230.66.78 - - [09/Jul/2018 03:21:43] "POST /_dash-update-component HTTP/1.1" 500 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,590] ERROR in app: Exception on /_dash-update-component [POST]
 Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2309, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2295, in wsgi_app
-    response = self.handle_exception(e)
-  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1741, in handle_exception
-    reraise(exc_type, exc_value, tb)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
     response = self.full_dispatch_request()
   File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
@@ -556,7 +448,978 @@ Traceback (most recent call last):
     return self.callback_map[target_id]['callback'](*args)
   File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
     output_value = func(*args, **kwargs)
-  File "/home/ubuntu/twitch-emotes/src/dash/live.py", line 105, in update_graph_scatter
+  File "live.py", line 107, in update_graph_scatter
     max_y = max([max(Y),max(Z)])
 ValueError: max() arg is an empty sequence
-173.230.66.78 - - [09/Jul/2018 03:21:44] "POST /_dash-update-component HTTP/1.1" 200 -
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,723] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,744] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,849] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,870] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:17,957] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:17] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,021] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,130] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,209] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,372] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,409] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,528] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,552] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,698] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,723] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,821] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,842] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,934] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:18,956] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:18] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,043] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,066] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,161] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,264] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,336] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,434] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 11:49:19,458] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [17/Jul/2018 11:49:19] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:27:41,050] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:41] "POST /_dash-update-component HTTP/1.1" 500 -
+172.56.29.0 - - [17/Jul/2018 13:27:41] "GET /favicon.ico HTTP/1.1" 200 -
+[2018-07-17 13:27:41,224] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:41] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:27:41,225] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:41] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:27:45,330] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:45] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:27:46,590] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:46] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:27:55,860] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:55] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:27:56,980] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:27:56] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:28:13,830] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:28:13] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:28:14,898] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:28:14] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:28:26,384] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:28:26] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:30:12,105] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:30:12] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:30:45,840] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:30:45] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:30:45,853] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:30:45] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:31:09,831] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:31:09] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:31:09,941] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:31:09] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:31:16,140] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:31:16] "POST /_dash-update-component HTTP/1.1" 500 -
+[2018-07-17 13:31:23,701] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+172.56.29.0 - - [17/Jul/2018 13:31:23] "POST /_dash-update-component HTTP/1.1" 500 -
+174.201.24.238 - - [17/Jul/2018 14:07:33] "GET / HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 14:07:34] "GET /_dash-dependencies HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 14:07:34] "GET /_dash-layout HTTP/1.1" 200 -
+[2018-07-17 14:07:35,304] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+174.201.24.238 - - [17/Jul/2018 14:07:35] "POST /_dash-update-component HTTP/1.1" 500 -
+174.201.24.238 - - [17/Jul/2018 14:07:37] "POST /_dash-update-component HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 14:07:40] "POST /_dash-update-component HTTP/1.1" 200 -
+186.54.30.5 - - [17/Jul/2018 15:36:33] "HEAD / HTTP/1.0" 200 -
+174.201.24.238 - - [17/Jul/2018 16:13:51] "GET / HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 16:13:53] "GET /_dash-dependencies HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 16:13:55] "GET /_dash-layout HTTP/1.1" 200 -
+[2018-07-17 16:13:55,451] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+174.201.24.238 - - [17/Jul/2018 16:13:55] "POST /_dash-update-component HTTP/1.1" 500 -
+174.201.24.238 - - [17/Jul/2018 16:57:04] "GET / HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 16:57:06] "GET /_dash-layout HTTP/1.1" 200 -
+174.201.24.238 - - [17/Jul/2018 16:57:06] "GET /_dash-dependencies HTTP/1.1" 200 -
+[2018-07-17 16:57:06,958] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+174.201.24.238 - - [17/Jul/2018 16:57:06] "POST /_dash-update-component HTTP/1.1" 500 -
+173.152.51.240 - - [17/Jul/2018 18:37:37] "GET / HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:38] "GET /_dash-layout HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:38] "GET /_dash-dependencies HTTP/1.1" 200 -
+[2018-07-17 18:37:38,710] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+173.152.51.240 - - [17/Jul/2018 18:37:38] "POST /_dash-update-component HTTP/1.1" 500 -
+173.152.51.240 - - [17/Jul/2018 18:37:43] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:43] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:50] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:53] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:53] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:37:57] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:38:00] "POST /_dash-update-component HTTP/1.1" 200 -
+173.152.51.240 - - [17/Jul/2018 18:38:03] "POST /_dash-update-component HTTP/1.1" 200 -
+177.205.211.88 - - [17/Jul/2018 18:43:17] "HEAD / HTTP/1.0" 200 -
+177.133.237.8 - - [17/Jul/2018 20:24:21] "HEAD / HTTP/1.0" 200 -
+69.141.121.153 - - [18/Jul/2018 00:31:45] "GET / HTTP/1.1" 200 -
+69.141.121.153 - - [18/Jul/2018 00:31:46] "GET /_dash-dependencies HTTP/1.1" 200 -
+69.141.121.153 - - [18/Jul/2018 00:31:46] "GET /_dash-layout HTTP/1.1" 200 -
+69.141.121.153 - - [18/Jul/2018 00:31:46] "GET /favicon.ico HTTP/1.1" 200 -
+[2018-07-18 00:31:46,564] ERROR in app: Exception on /_dash-update-component [POST]
+Traceback (most recent call last):
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 2292, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1815, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1718, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1813, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 558, in dispatch
+    return self.callback_map[target_id]['callback'](*args)
+  File "/home/ubuntu/.local/lib/python2.7/site-packages/dash/dash.py", line 515, in add_context
+    output_value = func(*args, **kwargs)
+  File "live.py", line 107, in update_graph_scatter
+    max_y = max([max(Y),max(Z)])
+ValueError: max() arg is an empty sequence
+69.141.121.153 - - [18/Jul/2018 00:31:46] "POST /_dash-update-component HTTP/1.1" 500 -
+168.1.128.36 - - [18/Jul/2018 00:36:19] "GET / HTTP/1.1" 200 -

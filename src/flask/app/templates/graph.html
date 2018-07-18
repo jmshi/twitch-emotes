@@ -1,0 +1,166 @@
+{% extends "index.html" %}
+{% block graph %}
+  <script type="text/javascript">
+
+var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+jQuery.noConflict();
+
+var example = 'dynamic-update',
+theme = 'dark-unica';
+
+(function($){ // encapsulate jQuery
+$(function () {
+    $(document).ready(function () {
+        // Highcharts options
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        $('#container').highcharts({
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                    }
+                }
+            },
+            title: {
+                text: 'Scalable Sensing of Emergent Events'
+            },
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'MESSAGES PER SECOND'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: true,
+		itemStyle: {
+		    font: '40 px'
+		}
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [
+            {
+                data: [],
+                name: 'EARLY DATA RECEIVED',
+                color: '#bdbdbd',
+                dashStyle: 'longdash'
+            },
+            {
+                data: [],
+                name: 'PREDICTION',
+                color: '#64b5f6'
+            },
+            {
+                data: [],
+                name: '~100% DATA RECEIVED',
+                color: '#ffee58'
+            }]
+        });
+    });
+});
+
+  $(function() {
+    // This function takes care of loading content from the backend
+    // and inserts it into the chart data structure
+    var timer = 0;
+    var submit_form = function() {
+      // If called directly from UI, clear existing timer
+      if(timer) {
+        clearTimeout(timer);
+        timer = 0;
+      }
+      // Get data from views.py
+      $.getJSON($SCRIPT_ROOT + '/data.json', {
+        currKey: $('select[id="currKey"]').val()
+      }, function(data) {
+        // Update chart
+	console.log("read this part");
+        var chart = $("#container").highcharts();
+        var cumulative = [];
+        for(var ii = 0; ii < data.cumulative.length; ii++) {
+          var couplet = data.cumulative[ii];
+          cumulative.push([couplet[0], couplet[1]]);
+        }
+        chart.series[0].setData(cumulative, false, true, true);
+        chart.redraw();
+      });
+      // Restart timer to keep updating periodically.
+      timer = setTimeout(submit_form, 5000);
+    };
+    $('a#calculate').bind('click', submit_form);
+    $('input[type=text]').bind('keydown', function(e) {
+      if (e.keyCode == 13) {
+        submit_form();
+      }
+    });
+    // Initial start of time, make it wait for 1 second to allow highcharts to load
+    setTimeout(submit_form, 1000);
+  });
+
+})(jQuery);
+
+</script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900" rel="stylesheet" type="text/css">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="msapplication-TileImage" content="http://www.highcharts.com/mstile-144x144.png">
+
+	<script src="http://www.highcharts.com/joomla/js/covervid/covervid.js" type="text/javascript"></script>
+	<script src="http://www.highcharts.com/joomla/js/covervid/fullscreen.js" type="text/javascript"></script>
+</head>
+<body >
+        <!-- Selection box that allows to switch among a sample of sensors //-->
+	<div style="margin: 15px"><select id="currKey" onchange="submit_form()">
+		<option value="0">Sensor 1</option>
+		<option value="1">Sensor 2</option>
+		<option value="2">Sensor 3</option>
+		<option value="3">Sensor 4</option>
+		<option value="4">Sensor 5</option>
+		<option value="5">Sensor 6</option>
+		<option value="6">Sensor 7</option>
+		<option value="7">Sensor 8</option>
+		<option value="8">Sensor 9</option>
+		<option value="9">Sensor 10</option>
+	</select><span style="margin-left: 50px"><a href="https://docs.google.com/presentation/d/1wEBlqWDfi3yLH2jh9gWsPNJ0S1LYAgoQQjFCy6CG-iY/edit?usp=sharing" target="_blank">Slide deck</a></span>
+	</div>
+	<br clear="all">
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 sidebar-eq demo">
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<!-- Container that holds the chart //-->
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<div class="clearfix"></div>
+		<script src="http://code.highcharts.com/themes/dark-unica.js"></script>
+	</div>
+</body>
+</html>
+{% endblock %}
+

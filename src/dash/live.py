@@ -46,7 +46,9 @@ def serve_layout():
            dcc.Dropdown(id='xaxis-column',
                options=[{'label':'1 min','value': 1},
                         {'label':'10 min','value': 10},
-                        {'label':'1 hour','value': 60}],
+                        {'label':'1 hour','value': 60},
+                        {'label':'1 day','value': 1440},
+                        {'label':'1 week','value': 10080}],
                value=1
                )
            ],style={'width': '30%', 'display': 'inline-block'}),
@@ -117,4 +119,5 @@ def update_graph_scatter(yaxis_column_name,xaxis_column_name):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True,host='0.0.0.0')
+    app.run_server(debug=False,host='0.0.0.0',port=8000)
+    #app.run_server(debug=True,host='0.0.0.0')

@@ -121,7 +121,7 @@ def get_footy():
     jsonresponse.sort(key=lambda x: -x['count'])
     footy_list = jsonresponse[:10]
     for item in footy_list:
-        item["count"] *=5
+        item["count"] =int(5.1*item["count"])
         if item["emote"] in footy_dict:
           item["id"] = footy_dict[item["emote"]]
         else:
@@ -143,7 +143,7 @@ def build_plot():
     jsonresponse = [{"emote":x.emote_name,"count":x.cnt} for x in response_list]
     jsonresponse.sort(key=lambda x: -x['count'])
 
-    top_n = 5
+    top_n = 6
     top_list = [item["emote"] for item in jsonresponse[:top_n]]
     top_list1 = ["'"+item["emote"]+"'" for item in jsonresponse[:top_n]]
     #print top_list
@@ -167,6 +167,7 @@ def build_plot():
     t2,v2 = [],[]
     t3,v3 = [],[]
     t4,v4 = [],[]
+    t5,v5 = [],[]
     for item in jsonresponse:
         if item["emote"]==top_list[0]:
            t0.append(time_to_int(item["time"]))
@@ -183,10 +184,13 @@ def build_plot():
         if item["emote"]==top_list[4]:
            t4.append(time_to_int(item["time"]))
            v4.append(item["count"])
+        if item["emote"]==top_list[5]:
+           t5.append(time_to_int(item["time"]))
+           v5.append(item["count"])
     
     #do running sum
     fig,ax = plt.subplots()
-    for i in range(5):
+    for i in range(top_n):
         if i==0:
           x,y=np.array(t0),np.array(v0)
         if i==1: 
@@ -197,8 +201,11 @@ def build_plot():
           x,y=np.array(t3),np.array(v3)
         if i==4:
           x,y=np.array(t4),np.array(v4)
+        if i==5:
+          x,y=np.array(t5),np.array(v5)
 
-        ax.plot_date(x,5*np.cumsum(y),'-',label=top_list[i])
+        
+        ax.plot_date(x,(5.1*np.cumsum(y)).astype(int),'-',label=top_list[i])
 
     # Choose your xtick format string
     date_fmt = '%Y-%m-%d %H:%M:%S'
