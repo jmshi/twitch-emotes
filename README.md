@@ -2,9 +2,10 @@
 <img style="float" src="img/banner.png">
 </p>
 
-[link_to_slides](tbd)
+[link_to_slides](https://www.slideshare.net/slideshow/embed_code/key/gGbeGLC0j0CvZO)
 
-[link_to_demo_site](http:twitch-emotes.us/home)
+[link_to_demo_video](https://youtu.be/wzxTnE7EMcE)
+
 
 # Code Description
 A real-time data pipeline for analyzing twitch chat data. Specially designed to track and analyze the global (free) and subscribed 
