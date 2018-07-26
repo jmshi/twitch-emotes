@@ -58,9 +58,8 @@ As show in Fig.5, the IRC bots listen to hundreds of live channels in parallel, 
 
 # To-do
 1) more functionality in the analysis: e.g., including the user information who used the emotes
-2) expand to a complete emote set (challenging but do-able)
-3) more channels and auto update the channels which are online/offline 
-
+2) expand to a complete emote set (challenging but do-able) and monitoring more channels
+3) automate schedule/monitor the workflow with tools such as airflow
 
 
 
