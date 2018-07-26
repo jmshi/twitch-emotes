@@ -29,7 +29,7 @@ For demonstrations, this pipeline is built to fullfill the following three purpo
 
 
 <p float="center">
-  <img style="float",src="img/channel.png" />
+  <img src="img/channel.png" />
 </p>
 <p align="center"> Fig.1 Top 10 live channels with most emotes usages in real-time. </p>
 
