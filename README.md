@@ -20,15 +20,13 @@ For demonstrations, this pipeline is built to fullfill the following three purpo
 2) Find out the most popular paid and free emotes for a given channel;
 3) Find the trending emotes of a specific topic, say WorldCup 2018
 
-down vote
-
-This will display the three images side by side if the images are not to wide.
-
 <p float="left">
-  <img src="img/channel.png" width="100" />
-  <img src="img/emotes.png" width="100" /> 
-  <img src="img/live.png" width="100" />
-   <img src="img/worldcup.png" width="100" />
+  <img src="img/channel.png" width="400" />
+  <img src="img/emotes.png" width="400" /> 
+</p>
+<p float="left">
+  <img src="img/live.png" width="400" />
+   <img src="img/worldcup.png" width="400" />
 </p>
 
 
