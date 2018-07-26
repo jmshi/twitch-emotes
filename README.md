@@ -12,6 +12,7 @@
 2. [Motivation](README.md#motivation)
 3. [Goals](README.md#goals)
 4. [Pipeline](README.md#pipeline)
+5. [To-do](README.md#to-do)
 
 
 # Description
@@ -61,5 +62,9 @@ As show in Fig.5, the IRC bots listen to hundreds of live channels in parallel, 
 2) expand to a complete emote set (challenging but do-able) and monitoring more channels
 3) automate schedule/monitor the workflow with tools such as airflow
 
-
+# Other packages
+special thanks to the following pkg developers.
+1) twitch api python wrapper: [python-twitch-client](https://github.com/tsifrer/python-twitch-client) used to get the channel/emotes information
+2) light weight bots: [python-twitch-stream](https://github.com/317070/python-twitch-stream) modified to extract chat messages
+3) historic data downloader: [twitch-chat-downloader](https://github.com/PetterKraabol/Twitch-Chat-Downloader) modified to download archived data in parallel. 
 
