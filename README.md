@@ -21,8 +21,8 @@ For demonstrations, this pipeline is built to fullfill the following three purpo
 3) Find the trending emotes of a specific topic, say WorldCup 2018
 
 <p float="left">
-  <img src="img/channel.png" width="400" />
-  <img src="img/emotes.png" width="400" /> 
+  <img src="img/channel.png" width="500" />
+  <img src="img/emotes.png" width="500" /> 
 </p>
 <p float="left">
   <img src="img/live.png" width="400" />
