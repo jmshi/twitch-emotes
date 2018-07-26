@@ -7,6 +7,13 @@
 [link_to_demo_video](https://youtu.be/wzxTnE7EMcE)
 
 
+# Table of Contents
+1. [Code Description](README.md#code description)
+2. [Motivation](README.md#motivation)
+3. [Goals](README.md#goals)
+4. [Pipeline](README.md#pipeline)
+
+
 # Code Description
 A real-time data pipeline for analyzing ztwitch chat data. Specially designed to track and analyze the global (free) and subscribed 
 (paid) emotes embedded in chat messages from up to 1000 active channels. Written mostly in python.
@@ -22,8 +29,8 @@ For demonstrations, this pipeline is built to fullfill the following three purpo
 
 <p float="center">
   <img style="float",src="img/channel.png" />
-  <br> caption here </br>
 </p>
+<p align="center"> Fig.1 Top 10 live channels with most emotes usages in real-time </p>
 <p float="center">
     <img src="img/emotes.png" />
 </p>
@@ -37,7 +44,7 @@ For demonstrations, this pipeline is built to fullfill the following three purpo
 </p>
 
 
-# Pipeline Architecture
+# Pipeline
 <p align="center">
 <img style="float" src="img/pipeline.png">
 </p>
