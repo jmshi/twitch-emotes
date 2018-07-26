@@ -22,7 +22,7 @@ For demonstrations, this pipeline is built to fullfill the following three purpo
 
 <p float="center">
   <img style="float",src="img/channel.png" />
-  <caption this is a caption />
+  <br> caption here </br>
 </p>
 <p float="center">
     <img src="img/emotes.png" />
